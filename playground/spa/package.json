@@ -9,13 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rain-star/flexible": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@rain-star/postcss-pxtorem": "^0.0.10",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.1.0",
+    "postcss": "^8.4.31",
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   }
