@@ -1,5 +1,9 @@
+const pxtorem = require('@rain-star/postcss-pxtorem')
+
 module.exports = {
-  plugins: {
-    '@rain-star/postcss-pxtorem': {},
-  },
+  plugins: [
+    pxtorem.pxtorem({
+      propList: ['*'],
+    }),
+  ],
 }
