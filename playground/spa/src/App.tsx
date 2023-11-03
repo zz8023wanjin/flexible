@@ -2,13 +2,10 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className='App'>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-      </div>
+      <p className='border-box'>test border 0.5 px</p>
     </div>
   )
 }
