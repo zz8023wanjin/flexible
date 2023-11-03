@@ -26,24 +26,12 @@ const defaultOptions: FlexibleOptions = {
   ],
 }
 
-function flexible(options?: FlexibleOptions ) {
+function flexible(options?: FlexibleOptions) {
   options = { ...defaultOptions, ...options }
 
   const { rootValue, designDevice } = options
 
   const docEl = document.documentElement
-
-  const dpr = window.devicePixelRatio || 1
-
-  // adjust body font size
-  function setBodyFontSize() {
-    if (document.body) {
-      document.body.style.fontSize = rootValue * dpr + 'px'
-    } else {
-      document.addEventListener('DOMContentLoaded', setBodyFontSize)
-    }
-  }
-  setBodyFontSize()
 
   // set 1rem = viewWidth / 375
   function setRemUnit() {
@@ -59,17 +47,16 @@ function flexible(options?: FlexibleOptions ) {
   setRemUnit()
 
   // detect 0.5px supports
-  if (dpr >= 2) {
-    const fakeBody = document.createElement('body')
-    const testElement = document.createElement('div')
-    testElement.style.border = '.5px solid transparent'
-    fakeBody.appendChild(testElement)
-    docEl.appendChild(fakeBody)
-    if (testElement.offsetHeight === 1) {
-      docEl.classList.add('hairlines')
-    }
-    docEl.removeChild(fakeBody)
+  const fakeBody = document.createElement('body')
+  const testElement = document.createElement('div')
+  testElement.style.border = '.5px solid transparent'
+  fakeBody.appendChild(testElement)
+  docEl.appendChild(fakeBody)
+  if (testElement.offsetHeight === 1) {
+    // supports 0.5px
+    docEl.classList.add('hairlines')
   }
+  docEl.removeChild(fakeBody)
 
   // reset rem unit on page resize
   window.addEventListener('resize', setRemUnit)
